@@ -290,7 +290,59 @@ const vocabularyLists = [
   },
 ];
 
-const elmVocabularyList = document.querySelector("ul.vocabulary-list");
+const vocabularyFalse = [
+  "place",
+  "task",
+  "enable",
+  "disable",
+  "access",
+  "join",
+  "version",
+  "service",
+  "support",
+  "post",
+  "next",
+  "develop",
+  "customize",
+  "report",
+  "contact",
+  "install",
+  "login",
+  "body",
+  "daily",
+  "public",
+  "call",
+  "art",
+  "happy",
+  "design",
+  "collection",
+  "model",
+  "employee",
+  "company",
+  "student",
+  "special",
+  "famous",
+  "simple",
+  "easy",
+  "policy",
+  "question",
+  "floor",
+  "lane",
+  "content",
+  "speed",
+  "seed",
+  "exchange",
+  "greed",
+  "character",
+  "explore",
+  "hungry",
+  "ice",
+  "nowhere",
+  "international",
+  "browser",
+];
+
+const elmVocabularyList = document.querySelectorAll("ul.vocabulary-list");
 
 function filterWords(array) {
   const newArray = [];
@@ -322,9 +374,9 @@ function filterWords(array) {
   });
 
   // Loop newArray -> render html
-  newArray.map((word) => {
+  for (let word of newArray) {
     const liElm = document.createElement("li");
-    liElm.classList.add('vocabulary-text')
+    liElm.classList.add("vocabulary-text");
     // Object.assign(liElm.style, {
     //   display: 'block',
     //   padding: '10px',
@@ -334,11 +386,23 @@ function filterWords(array) {
     //   font-size: 20px;
     // `
 
-    
     liElm.textContent = word;
-
-    elmVocabularyList.appendChild(liElm);
-  });
+    elmVocabularyList[0].appendChild(liElm);
+  }
 }
 
 filterWords(vocabularyLists);
+
+function filterWordsFalse(array) {
+  array.sort((a, b) => a.length - b.length);
+
+  for (let word of array) {
+    const liElm = document.createElement("li");
+    liElm.classList.add("vocabulary-text");
+    liElm.textContent = word;
+    
+    elmVocabularyList[1].appendChild(liElm);
+  };
+}
+
+filterWordsFalse(vocabularyFalse);
